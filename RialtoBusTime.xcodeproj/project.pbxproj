@@ -16,6 +16,12 @@
 		3AABE65417AEA32600B07330 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE65317AEA32600B07330 /* Default.png */; };
 		3AABE65617AEA32600B07330 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE65517AEA32600B07330 /* Default@2x.png */; };
 		3AABE65817AEA32600B07330 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE65717AEA32600B07330 /* Default-568h@2x.png */; };
+		3AABE65F17AEA38200B07330 /* busTime.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE65E17AEA38200B07330 /* busTime.txt */; };
+		3AABE66817AEA3C400B07330 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AABE66117AEA39700B07330 /* MainViewController.m */; };
+		3AABE66917AEA3C800B07330 /* MainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AABE66517AEA39700B07330 /* MainViewCell.m */; };
+		3AABE66A17AEA3CB00B07330 /* TimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AABE66717AEA39700B07330 /* TimeLabel.m */; };
+		3AABE66B17AEA3EF00B07330 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE66217AEA39700B07330 /* MainViewController.xib */; };
+		3AABE66C17AEA3F200B07330 /* MainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE66317AEA39700B07330 /* MainViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,15 @@
 		3AABE65317AEA32600B07330 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3AABE65517AEA32600B07330 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3AABE65717AEA32600B07330 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3AABE65E17AEA38200B07330 /* busTime.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busTime.txt; sourceTree = "<group>"; };
+		3AABE66017AEA39700B07330 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		3AABE66117AEA39700B07330 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		3AABE66217AEA39700B07330 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		3AABE66317AEA39700B07330 /* MainViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewCell.xib; sourceTree = "<group>"; };
+		3AABE66417AEA39700B07330 /* MainViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewCell.h; sourceTree = "<group>"; };
+		3AABE66517AEA39700B07330 /* MainViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewCell.m; sourceTree = "<group>"; };
+		3AABE66617AEA39700B07330 /* TimeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeLabel.h; sourceTree = "<group>"; };
+		3AABE66717AEA39700B07330 /* TimeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +93,17 @@
 		3AABE64717AEA32600B07330 /* RialtoBusTime */ = {
 			isa = PBXGroup;
 			children = (
+				3AABE65E17AEA38200B07330 /* busTime.txt */,
 				3AABE65017AEA32600B07330 /* AppDelegate.h */,
 				3AABE65117AEA32600B07330 /* AppDelegate.m */,
+				3AABE66017AEA39700B07330 /* MainViewController.h */,
+				3AABE66117AEA39700B07330 /* MainViewController.m */,
+				3AABE66217AEA39700B07330 /* MainViewController.xib */,
+				3AABE66317AEA39700B07330 /* MainViewCell.xib */,
+				3AABE66417AEA39700B07330 /* MainViewCell.h */,
+				3AABE66517AEA39700B07330 /* MainViewCell.m */,
+				3AABE66617AEA39700B07330 /* TimeLabel.h */,
+				3AABE66717AEA39700B07330 /* TimeLabel.m */,
 				3AABE64817AEA32600B07330 /* Supporting Files */,
 			);
 			path = RialtoBusTime;
@@ -153,6 +177,9 @@
 				3AABE65417AEA32600B07330 /* Default.png in Resources */,
 				3AABE65617AEA32600B07330 /* Default@2x.png in Resources */,
 				3AABE65817AEA32600B07330 /* Default-568h@2x.png in Resources */,
+				3AABE65F17AEA38200B07330 /* busTime.txt in Resources */,
+				3AABE66B17AEA3EF00B07330 /* MainViewController.xib in Resources */,
+				3AABE66C17AEA3F200B07330 /* MainViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +192,9 @@
 			files = (
 				3AABE64E17AEA32600B07330 /* main.m in Sources */,
 				3AABE65217AEA32600B07330 /* AppDelegate.m in Sources */,
+				3AABE66817AEA3C400B07330 /* MainViewController.m in Sources */,
+				3AABE66917AEA3C800B07330 /* MainViewCell.m in Sources */,
+				3AABE66A17AEA3CB00B07330 /* TimeLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,10 +282,14 @@
 		3AABE65D17AEA32600B07330 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Intellectsoft LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Intellectsoft LLC";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RialtoBusTime/RialtoBusTime-Prefix.pch";
 				INFOPLIST_FILE = "RialtoBusTime/RialtoBusTime-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FF24CD82-8D9F-4AEE-907E-4163DBC8CFA5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF24CD82-8D9F-4AEE-907E-4163DBC8CFA5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

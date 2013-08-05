@@ -7,6 +7,7 @@
 //
 
 #import "TimeLabel.h"
+#import "NSDate+Extention.h"
 
 @implementation TimeLabel
 
@@ -40,22 +41,16 @@
 - (void) setupContent
 {
     NSDate *today = [NSDate date];
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *weekdayComponents = [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:today];
-    [weekdayComponents setHour:self.hour];
-    [weekdayComponents setMinute:self.minute];
-    NSDate *start = [gregorian dateFromComponents:weekdayComponents];
-    NSInteger interval = [start timeIntervalSinceDate:today];
-    interval = (interval < 0)?(interval + 60*60*24):(interval);
-    NSInteger hours = interval / 3600;
-    NSInteger minutes = (interval / 60) % 60;
-    NSInteger seconds = interval % 60;
-    
+    NSInteger interval = [NSDate timeIntervalToHours:self.hour andMinutes:self.minute];
+
     if (interval > 12 * 60 * 60) {
         self.textColor = [UIColor grayColor];
         self.text = [NSString stringWithFormat:@"00:00:00"];
     } else {
         self.textColor = [UIColor redColor];
+        NSInteger hours = (interval / 3600) % 24;
+        NSInteger minutes = (interval / 60) % 60;
+        NSInteger seconds = interval % 60;
         self.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
     }
 }

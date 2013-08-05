@@ -8,6 +8,9 @@
 
 #import "MainViewController.h"
 #import "MainViewCell.h"
+#import "NSDate+Extention.h"
+
+#define MINUTES_BEFORE 5
 
 @interface MainViewController ()
 
@@ -95,6 +98,33 @@
 {
     NSDictionary *timesBlock = self.timesData[section];
     return [NSString stringWithFormat:@"%@ - %@", timesBlock[@"startPoint"], timesBlock[@"endPoint"]];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *timesBlock = self.timesData[indexPath.section];
+    NSDictionary *time = timesBlock[@"times"][indexPath.row];
+    NSString *startTimeStr = time[@"start"];
+    NSArray *timeArr = [startTimeStr componentsSeparatedByString:@":"];
+    
+    NSDate *itemDate = [NSDate dateWithHours:[timeArr[0] integerValue] andMinutes:[timeArr[1] integerValue]];
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    if (localNotification == nil)
+        return;
+    localNotification.fireDate = [itemDate dateByAddingTimeInterval:-MINUTES_BEFORE*60];
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.alertBody = [NSString stringWithFormat:@"%d minutes to bus departure at %@", MINUTES_BEFORE, startTimeStr];
+//    localNotif.alertAction = @"View Details";
+    
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+//    localNotif.applicationIconBadgeNumber = 0;
+    
+//    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:item.eventName forKey:ToDoItemKey];
+//    localNotif.userInfo = infoDict;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 #pragma mark - Lazy

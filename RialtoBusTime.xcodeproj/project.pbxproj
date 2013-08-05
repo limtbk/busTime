@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A7F012317B0016300ED8ED4 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7F012217B0016300ED8ED4 /* icon@2x.png */; };
+		3A7F012517B001C900ED8ED4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7F012417B001C900ED8ED4 /* icon.png */; };
 		3AABE64217AEA32600B07330 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AABE64117AEA32600B07330 /* UIKit.framework */; };
 		3AABE64417AEA32600B07330 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AABE64317AEA32600B07330 /* Foundation.framework */; };
 		3AABE64617AEA32600B07330 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AABE64517AEA32600B07330 /* CoreGraphics.framework */; };
@@ -22,9 +24,14 @@
 		3AABE66A17AEA3CB00B07330 /* TimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AABE66717AEA39700B07330 /* TimeLabel.m */; };
 		3AABE66B17AEA3EF00B07330 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE66217AEA39700B07330 /* MainViewController.xib */; };
 		3AABE66C17AEA3F200B07330 /* MainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE66317AEA39700B07330 /* MainViewCell.xib */; };
+		3AABE66F17AEE2D500B07330 /* NSDate+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AABE66E17AEE2D500B07330 /* NSDate+Extention.m */; };
+		3AABE67417AFF1DA00B07330 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE67217AFF1DA00B07330 /* bus.png */; };
+		3AABE67517AFF1DA00B07330 /* bus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE67317AFF1DA00B07330 /* bus@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A7F012217B0016300ED8ED4 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		3A7F012417B001C900ED8ED4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		3AABE63E17AEA32600B07330 /* RialtoBusTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RialtoBusTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AABE64117AEA32600B07330 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3AABE64317AEA32600B07330 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,6 +54,10 @@
 		3AABE66517AEA39700B07330 /* MainViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewCell.m; sourceTree = "<group>"; };
 		3AABE66617AEA39700B07330 /* TimeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeLabel.h; sourceTree = "<group>"; };
 		3AABE66717AEA39700B07330 /* TimeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeLabel.m; sourceTree = "<group>"; };
+		3AABE66D17AEE2D500B07330 /* NSDate+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extention.h"; sourceTree = "<group>"; };
+		3AABE66E17AEE2D500B07330 /* NSDate+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extention.m"; sourceTree = "<group>"; };
+		3AABE67217AFF1DA00B07330 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus.png; path = RialtoBusTime/bus.png; sourceTree = "<group>"; };
+		3AABE67317AFF1DA00B07330 /* bus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bus@2x.png"; path = "RialtoBusTime/bus@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +77,10 @@
 		3AABE63517AEA32600B07330 = {
 			isa = PBXGroup;
 			children = (
+				3A7F012417B001C900ED8ED4 /* icon.png */,
+				3A7F012217B0016300ED8ED4 /* icon@2x.png */,
+				3AABE67217AFF1DA00B07330 /* bus.png */,
+				3AABE67317AFF1DA00B07330 /* bus@2x.png */,
 				3AABE64717AEA32600B07330 /* RialtoBusTime */,
 				3AABE64017AEA32600B07330 /* Frameworks */,
 				3AABE63F17AEA32600B07330 /* Products */,
@@ -104,6 +119,8 @@
 				3AABE66517AEA39700B07330 /* MainViewCell.m */,
 				3AABE66617AEA39700B07330 /* TimeLabel.h */,
 				3AABE66717AEA39700B07330 /* TimeLabel.m */,
+				3AABE66D17AEE2D500B07330 /* NSDate+Extention.h */,
+				3AABE66E17AEE2D500B07330 /* NSDate+Extention.m */,
 				3AABE64817AEA32600B07330 /* Supporting Files */,
 			);
 			path = RialtoBusTime;
@@ -180,6 +197,10 @@
 				3AABE65F17AEA38200B07330 /* busTime.txt in Resources */,
 				3AABE66B17AEA3EF00B07330 /* MainViewController.xib in Resources */,
 				3AABE66C17AEA3F200B07330 /* MainViewCell.xib in Resources */,
+				3AABE67417AFF1DA00B07330 /* bus.png in Resources */,
+				3AABE67517AFF1DA00B07330 /* bus@2x.png in Resources */,
+				3A7F012317B0016300ED8ED4 /* icon@2x.png in Resources */,
+				3A7F012517B001C900ED8ED4 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +216,7 @@
 				3AABE66817AEA3C400B07330 /* MainViewController.m in Sources */,
 				3AABE66917AEA3C800B07330 /* MainViewCell.m in Sources */,
 				3AABE66A17AEA3CB00B07330 /* TimeLabel.m in Sources */,
+				3AABE66F17AEE2D500B07330 /* NSDate+Extention.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,14 +304,12 @@
 		3AABE65D17AEA32600B07330 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Intellectsoft LLC";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Intellectsoft LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RialtoBusTime/RialtoBusTime-Prefix.pch";
 				INFOPLIST_FILE = "RialtoBusTime/RialtoBusTime-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FF24CD82-8D9F-4AEE-907E-4163DBC8CFA5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF24CD82-8D9F-4AEE-907E-4163DBC8CFA5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -313,6 +333,7 @@
 				3AABE65D17AEA32600B07330 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

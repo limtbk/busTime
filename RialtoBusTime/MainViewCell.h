@@ -14,5 +14,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *startLabel;
 @property (nonatomic, strong) IBOutlet UILabel *endLabel;
 @property (nonatomic, strong) IBOutlet TimeLabel *timeLeftLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *notificationIcon;
 
 @end

@@ -9,8 +9,9 @@
 #import "MainViewController.h"
 #import "MainViewCell.h"
 #import "NSDate+Extention.h"
+#import "TimeSelectViewController.h"
 
-#define MINUTES_BEFORE 5
+#define MINUTES_BEFORE 10
 
 @interface MainViewController ()
 
@@ -40,9 +41,6 @@
     // Do any additional setup after loading the view from its nib.
     [self.tablePlaceholderView addSubview:self.tableViewController.view];
     self.tableViewController.view.frame = self.tablePlaceholderView.bounds;
-
-
-//    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,6 +83,15 @@
     cell.timeLeftLabel.hour = [timeArr[0] integerValue];
     cell.timeLeftLabel.minute = [timeArr[1] integerValue];
     
+    cell.notificationIcon.hidden = YES;
+    NSArray *scheduledNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *notification in scheduledNotifications) {
+        if ([notification.userInfo[@"busTime"] isEqualToString:startTimeStr]) {
+            cell.notificationIcon.hidden = NO;
+            break;
+        }
+    }
+    
     return cell;
 }
 
@@ -103,28 +110,65 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    NSDictionary *timesBlock = self.sortedTimesData[indexPath.section];
+    NSDictionary *time = timesBlock[@"times"][indexPath.row];
+    NSString *startTimeStr = time[@"start"];
+    NSArray *scheduledNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    NSUInteger selectedTime = 0;
+    for (UILocalNotification *notification in scheduledNotifications) {
+        if ([notification.userInfo[@"busTime"] isEqualToString:startTimeStr]) {
+            selectedTime = [notification.userInfo[@"minutesBefore"] integerValue];
+            break;
+        }
+    }
+    
+    TimeSelectViewController *timeSelectViewController = [[TimeSelectViewController alloc] init];
+    
+    timeSelectViewController.selectedTime = selectedTime;
+    timeSelectViewController.indexPath = indexPath;
+    timeSelectViewController.delegate = self;
+    [self presentViewController:timeSelectViewController animated:YES completion:^{
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }];
+    return;
+    
+}
+
+#pragma mark
+-(void)sendNotificationForIndexPath:(NSIndexPath *)indexPath withDelay:(NSUInteger) delay
+{
     NSDictionary *timesBlock = self.sortedTimesData[indexPath.section];
     NSDictionary *time = timesBlock[@"times"][indexPath.row];
     NSString *startTimeStr = time[@"start"];
     
-    NSDate *itemDate = [NSDate dateWithHours:[time[@"hour"] integerValue] andMinutes:[time[@"minute"] integerValue]];
-    
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    if (localNotification == nil)
-        return;
-    localNotification.fireDate = [itemDate dateByAddingTimeInterval:-MINUTES_BEFORE*60];
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.alertBody = [NSString stringWithFormat:@"%d minutes to bus departure at %@", MINUTES_BEFORE, startTimeStr];
-//    localNotif.alertAction = @"View Details";
-    
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
-//    localNotif.applicationIconBadgeNumber = 0;
-    
-//    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:item.eventName forKey:ToDoItemKey];
-//    localNotif.userInfo = infoDict;
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    NSArray *scheduledNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *notification in scheduledNotifications) {
+        if ([notification.userInfo[@"busTime"] isEqualToString:startTimeStr]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:notification];
+        }
+    }
+
+    if (delay>0) {
+        NSDate *itemDate = [NSDate dateWithHours:[time[@"hour"] integerValue] andMinutes:[time[@"minute"] integerValue]];
+        
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        if (localNotification == nil)
+            return;
+        localNotification.fireDate = [itemDate dateByAddingTimeInterval:-delay*60];
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        localNotification.alertBody = [NSString stringWithFormat:@"%d minutes to bus departure at %@", delay, startTimeStr];
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+        
+        userInfo[@"busTime"] = startTimeStr;
+        userInfo[@"minutesBefore"] = [NSNumber numberWithInteger:delay];
+        localNotification.userInfo = userInfo;
+        
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    } else {
+    }
 }
 
 #pragma mark - Lazy

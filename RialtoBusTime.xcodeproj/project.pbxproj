@@ -29,6 +29,8 @@
 		3AABE66F17AEE2D500B07330 /* NSDate+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AABE66E17AEE2D500B07330 /* NSDate+Extention.m */; };
 		3AABE67417AFF1DA00B07330 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE67217AFF1DA00B07330 /* bus.png */; };
 		3AABE67517AFF1DA00B07330 /* bus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AABE67317AFF1DA00B07330 /* bus@2x.png */; };
+		3AC821EF17B2FBB20055B5FA /* TimeSelectViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC821EE17B2FBB20055B5FA /* TimeSelectViewCell.m */; };
+		3AC821F117B2FBC70055B5FA /* TimeSelectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC821F017B2FBC70055B5FA /* TimeSelectViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,9 @@
 		3AABE66E17AEE2D500B07330 /* NSDate+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extention.m"; sourceTree = "<group>"; };
 		3AABE67217AFF1DA00B07330 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus.png; path = RialtoBusTime/bus.png; sourceTree = "<group>"; };
 		3AABE67317AFF1DA00B07330 /* bus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bus@2x.png"; path = "RialtoBusTime/bus@2x.png"; sourceTree = "<group>"; };
+		3AC821ED17B2FBB20055B5FA /* TimeSelectViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSelectViewCell.h; sourceTree = "<group>"; };
+		3AC821EE17B2FBB20055B5FA /* TimeSelectViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSelectViewCell.m; sourceTree = "<group>"; };
+		3AC821F017B2FBC70055B5FA /* TimeSelectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeSelectViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +130,9 @@
 				3A7F012617B040F600ED8ED4 /* TimeSelectViewController.h */,
 				3A7F012717B040F600ED8ED4 /* TimeSelectViewController.m */,
 				3A7F012817B040F600ED8ED4 /* TimeSelectViewController.xib */,
+				3AC821F017B2FBC70055B5FA /* TimeSelectViewCell.xib */,
+				3AC821ED17B2FBB20055B5FA /* TimeSelectViewCell.h */,
+				3AC821EE17B2FBB20055B5FA /* TimeSelectViewCell.m */,
 				3AABE66617AEA39700B07330 /* TimeLabel.h */,
 				3AABE66717AEA39700B07330 /* TimeLabel.m */,
 				3AABE66D17AEE2D500B07330 /* NSDate+Extention.h */,
@@ -210,6 +218,7 @@
 				3A7F012317B0016300ED8ED4 /* icon@2x.png in Resources */,
 				3A7F012517B001C900ED8ED4 /* icon.png in Resources */,
 				3A7F012A17B040F600ED8ED4 /* TimeSelectViewController.xib in Resources */,
+				3AC821F117B2FBC70055B5FA /* TimeSelectViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +236,7 @@
 				3AABE66A17AEA3CB00B07330 /* TimeLabel.m in Sources */,
 				3AABE66F17AEE2D500B07330 /* NSDate+Extention.m in Sources */,
 				3A7F012917B040F600ED8ED4 /* TimeSelectViewController.m in Sources */,
+				3AC821EF17B2FBB20055B5FA /* TimeSelectViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

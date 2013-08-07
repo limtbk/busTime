@@ -10,4 +10,6 @@
 
 @interface MainViewController : UIViewController
 
+-(void)sendNotificationForIndexPath:(NSIndexPath *)indexPath withDelay:(NSUInteger) delay;
+
 @end

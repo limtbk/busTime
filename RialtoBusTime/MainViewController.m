@@ -17,6 +17,7 @@
 @property (nonatomic, strong) IBOutlet UITableViewController *tableViewController;
 @property (nonatomic, strong) IBOutlet UIView *tablePlaceholderView;
 @property (nonatomic, strong) NSArray *timesData;
+@property (nonatomic, strong) NSMutableArray *sortedTimesData;
 
 @end
 
@@ -53,12 +54,12 @@
 #pragma mark
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.timesData count];
+    return [self.sortedTimesData count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.timesData[section][@"times"] count];
+    return [self.sortedTimesData[section][@"times"] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +73,7 @@
     }
     
     // Configure the cell...
-    NSDictionary *timesBlock = self.timesData[indexPath.section];
+    NSDictionary *timesBlock = self.sortedTimesData[indexPath.section];
     
     NSDictionary *time = timesBlock[@"times"][indexPath.row];
     
@@ -96,19 +97,18 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSDictionary *timesBlock = self.timesData[section];
+    NSDictionary *timesBlock = self.sortedTimesData[section];
     return [NSString stringWithFormat:@"%@ - %@", timesBlock[@"startPoint"], timesBlock[@"endPoint"]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *timesBlock = self.timesData[indexPath.section];
+    NSDictionary *timesBlock = self.sortedTimesData[indexPath.section];
     NSDictionary *time = timesBlock[@"times"][indexPath.row];
     NSString *startTimeStr = time[@"start"];
-    NSArray *timeArr = [startTimeStr componentsSeparatedByString:@":"];
     
-    NSDate *itemDate = [NSDate dateWithHours:[timeArr[0] integerValue] andMinutes:[timeArr[1] integerValue]];
+    NSDate *itemDate = [NSDate dateWithHours:[time[@"hour"] integerValue] andMinutes:[time[@"minute"] integerValue]];
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     if (localNotification == nil)
@@ -137,13 +137,99 @@
         NSData *data = [NSData dataWithContentsOfFile:path];
         
         NSError *error = nil;
-        _timesData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        NSArray *allSchedules = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        
+        _timesData = [NSMutableArray arrayWithArray:allSchedules[0][@"scheduleData"]];
+        for (NSDictionary *schedule in allSchedules) {
+            NSUInteger currentDayOfWeek = [[NSDate date] dayOfWeek];
+            NSArray *weekDays = schedule[@"days"];
+            if ([weekDays containsObject:[NSNumber numberWithInteger:currentDayOfWeek]]) {
+                _timesData = [NSMutableArray arrayWithArray:schedule[@"scheduleData"]];
+                break;
+            }
+        }
 
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         }
     }
     return _timesData;
+}
+
+- (NSMutableArray *)sortedTimesData
+{
+    if (!_sortedTimesData) {
+        NSMutableArray *result = [NSMutableArray array];
+        
+        for (NSDictionary *scheduleData in self.timesData) {
+            NSMutableDictionary *mutableScheduleData = [NSMutableDictionary dictionaryWithDictionary:scheduleData];
+            NSArray *times = scheduleData[@"times"];
+            NSMutableArray *mutableTimes = [NSMutableArray array];
+            for (NSDictionary *time in times) {
+                NSMutableDictionary *mutableTime = [NSMutableDictionary dictionaryWithDictionary:time];
+                NSString *startTimeStr = time[@"start"];
+                NSArray *timeArr = [startTimeStr componentsSeparatedByString:@":"];
+                NSUInteger hour = [timeArr[0] integerValue];
+                NSUInteger minute = [timeArr[1] integerValue];
+                NSUInteger secondsToStart = [NSDate timeIntervalToHours:hour andMinutes:minute];
+                mutableTime[@"hour"] = [NSNumber numberWithInteger:hour];
+                mutableTime[@"minute"] = [NSNumber numberWithInteger:minute];
+                mutableTime[@"secondsToStart"] = [NSNumber numberWithInteger:secondsToStart];
+                [mutableTimes addObject:mutableTime];
+            }
+            [mutableTimes sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                NSMutableDictionary *dict1 = (NSMutableDictionary *)obj1;
+                NSMutableDictionary *dict2 = (NSMutableDictionary *)obj2;
+                NSNumber *secondsToStart1 = dict1[@"secondsToStart"];
+                NSNumber *secondsToStart2 = dict2[@"secondsToStart"];
+                return [secondsToStart1 compare:secondsToStart2];
+            }];
+            mutableScheduleData[@"times"] = mutableTimes;
+            mutableScheduleData[@"minSecondsToStart"] = mutableTimes[0][@"secondsToStart"];
+            [result addObject:mutableScheduleData];
+        }
+        [result sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSMutableDictionary *dict1 = (NSMutableDictionary *)obj1;
+            NSMutableDictionary *dict2 = (NSMutableDictionary *)obj2;
+            NSNumber *secondsToStart1 = dict1[@"minSecondsToStart"];
+            NSNumber *secondsToStart2 = dict2[@"minSecondsToStart"];
+            return [secondsToStart1 compare:secondsToStart2];
+        }];
+        _sortedTimesData = result;
+        [self performSelector:@selector(refreshSortedTimesData) withObject:nil afterDelay:1.0];
+    }
+    return _sortedTimesData;
+}
+
+- (void) refreshSortedTimesData
+{
+    for (NSMutableDictionary *mutableScheduleData in self.sortedTimesData) {
+        NSMutableArray *mutableTimes = mutableScheduleData[@"times"];
+        for (NSMutableDictionary *mutableTime in mutableTimes) {
+            NSUInteger hour = [mutableTime[@"hour"] integerValue];
+            NSUInteger minute = [mutableTime[@"minute"] integerValue];
+            NSUInteger secondsToStart = [NSDate timeIntervalToHours:hour andMinutes:minute];
+            mutableTime[@"secondsToStart"] = [NSNumber numberWithInteger:secondsToStart];
+        }
+        [mutableTimes sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSMutableDictionary *dict1 = (NSMutableDictionary *)obj1;
+            NSMutableDictionary *dict2 = (NSMutableDictionary *)obj2;
+            NSNumber *secondsToStart1 = dict1[@"secondsToStart"];
+            NSNumber *secondsToStart2 = dict2[@"secondsToStart"];
+            return [secondsToStart1 compare:secondsToStart2];
+        }];
+        mutableScheduleData[@"minSecondsToStart"] = mutableTimes[0][@"secondsToStart"];
+    }
+    [self.sortedTimesData sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSMutableDictionary *dict1 = (NSMutableDictionary *)obj1;
+        NSMutableDictionary *dict2 = (NSMutableDictionary *)obj2;
+        NSNumber *secondsToStart1 = dict1[@"minSecondsToStart"];
+        NSNumber *secondsToStart2 = dict2[@"minSecondsToStart"];
+        return [secondsToStart1 compare:secondsToStart2];
+    }];
+
+    [self.tableViewController.tableView reloadData];
+    [self performSelector:@selector(refreshSortedTimesData) withObject:nil afterDelay:1.0];
 }
 
 @end

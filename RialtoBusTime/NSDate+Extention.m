@@ -32,4 +32,23 @@
     return interval;
 }
 
+- (NSUInteger) dayOfWeek //monday = 0, sunday = 6
+{
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSWeekdayCalendarUnit) fromDate:self];
+    NSUInteger result = ((components.weekday+5)%7);
+    return result;
+}
+
+@end
+
+@implementation NSCalendar (GMTCalendar)
+
++(NSCalendar *) gmtCalendar
+{
+    NSCalendar *result = [NSCalendar currentCalendar];
+    [result setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"]];
+    [result setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    return result;
+}
+
 @end

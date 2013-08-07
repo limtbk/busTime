@@ -43,7 +43,7 @@
     NSDate *today = [NSDate date];
     NSInteger interval = [NSDate timeIntervalToHours:self.hour andMinutes:self.minute];
 
-    if (interval > 12 * 60 * 60) {
+    if (interval > 6 * 60 * 60) {
         self.textColor = [UIColor grayColor];
         self.text = [NSString stringWithFormat:@"00:00:00"];
     } else {

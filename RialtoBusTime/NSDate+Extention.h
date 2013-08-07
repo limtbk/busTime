@@ -12,5 +12,12 @@
 
 + (NSDate *) dateWithHours:(NSInteger)hours andMinutes:(NSUInteger)minutes;
 + (NSTimeInterval) timeIntervalToHours:(NSInteger)hours andMinutes:(NSInteger)minutes;
+- (NSUInteger) dayOfWeek; //monday = 0, sunday = 6
+
+@end
+
+@interface NSCalendar (GMTCalendar)
+
++(NSCalendar *) gmtCalendar;
 
 @end

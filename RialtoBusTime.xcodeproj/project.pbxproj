@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3A7F012317B0016300ED8ED4 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7F012217B0016300ED8ED4 /* icon@2x.png */; };
 		3A7F012517B001C900ED8ED4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7F012417B001C900ED8ED4 /* icon.png */; };
+		3A7F012917B040F600ED8ED4 /* TimeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F012717B040F600ED8ED4 /* TimeSelectViewController.m */; };
+		3A7F012A17B040F600ED8ED4 /* TimeSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A7F012817B040F600ED8ED4 /* TimeSelectViewController.xib */; };
 		3AABE64217AEA32600B07330 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AABE64117AEA32600B07330 /* UIKit.framework */; };
 		3AABE64417AEA32600B07330 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AABE64317AEA32600B07330 /* Foundation.framework */; };
 		3AABE64617AEA32600B07330 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AABE64517AEA32600B07330 /* CoreGraphics.framework */; };
@@ -32,6 +34,9 @@
 /* Begin PBXFileReference section */
 		3A7F012217B0016300ED8ED4 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		3A7F012417B001C900ED8ED4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		3A7F012617B040F600ED8ED4 /* TimeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSelectViewController.h; sourceTree = "<group>"; };
+		3A7F012717B040F600ED8ED4 /* TimeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSelectViewController.m; sourceTree = "<group>"; };
+		3A7F012817B040F600ED8ED4 /* TimeSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeSelectViewController.xib; sourceTree = "<group>"; };
 		3AABE63E17AEA32600B07330 /* RialtoBusTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RialtoBusTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AABE64117AEA32600B07330 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3AABE64317AEA32600B07330 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +122,9 @@
 				3AABE66317AEA39700B07330 /* MainViewCell.xib */,
 				3AABE66417AEA39700B07330 /* MainViewCell.h */,
 				3AABE66517AEA39700B07330 /* MainViewCell.m */,
+				3A7F012617B040F600ED8ED4 /* TimeSelectViewController.h */,
+				3A7F012717B040F600ED8ED4 /* TimeSelectViewController.m */,
+				3A7F012817B040F600ED8ED4 /* TimeSelectViewController.xib */,
 				3AABE66617AEA39700B07330 /* TimeLabel.h */,
 				3AABE66717AEA39700B07330 /* TimeLabel.m */,
 				3AABE66D17AEE2D500B07330 /* NSDate+Extention.h */,
@@ -201,6 +209,7 @@
 				3AABE67517AFF1DA00B07330 /* bus@2x.png in Resources */,
 				3A7F012317B0016300ED8ED4 /* icon@2x.png in Resources */,
 				3A7F012517B001C900ED8ED4 /* icon.png in Resources */,
+				3A7F012A17B040F600ED8ED4 /* TimeSelectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +226,7 @@
 				3AABE66917AEA3C800B07330 /* MainViewCell.m in Sources */,
 				3AABE66A17AEA3CB00B07330 /* TimeLabel.m in Sources */,
 				3AABE66F17AEE2D500B07330 /* NSDate+Extention.m in Sources */,
+				3A7F012917B040F600ED8ED4 /* TimeSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

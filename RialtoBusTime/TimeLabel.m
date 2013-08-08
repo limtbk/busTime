@@ -73,4 +73,15 @@
     [self setupContent];
 }
 
+- (void) setFirst:(BOOL)first
+{
+    _first = first;
+    if (first) {
+        self.font = [UIFont fontWithName:self.font.fontName size:30.0];
+    } else
+    {
+        self.font = [UIFont fontWithName:self.font.fontName size:24.0];
+    }
+}
+
 @end

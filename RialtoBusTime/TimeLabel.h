@@ -12,5 +12,6 @@
 
 @property (nonatomic, assign) NSUInteger hour;
 @property (nonatomic, assign) NSUInteger minute;
+@property (nonatomic, assign) BOOL first;
 
 @end

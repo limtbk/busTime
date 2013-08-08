@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5B94DC17B3E54200C08D9B /* celBottomLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5B94D917B3E54200C08D9B /* celBottomLine.png */; };
+		3A5B94DD17B3E54200C08D9B /* cellGradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5B94DA17B3E54200C08D9B /* cellGradient@2x.png */; };
+		3A5B94DE17B3E54200C08D9B /* cellTopLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5B94DB17B3E54200C08D9B /* cellTopLine.png */; };
 		3A7F012317B0016300ED8ED4 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7F012217B0016300ED8ED4 /* icon@2x.png */; };
 		3A7F012517B001C900ED8ED4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7F012417B001C900ED8ED4 /* icon.png */; };
 		3A7F012917B040F600ED8ED4 /* TimeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F012717B040F600ED8ED4 /* TimeSelectViewController.m */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A5B94D917B3E54200C08D9B /* celBottomLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = celBottomLine.png; sourceTree = "<group>"; };
+		3A5B94DA17B3E54200C08D9B /* cellGradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellGradient@2x.png"; sourceTree = "<group>"; };
+		3A5B94DB17B3E54200C08D9B /* cellTopLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellTopLine.png; sourceTree = "<group>"; };
 		3A7F012217B0016300ED8ED4 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		3A7F012417B001C900ED8ED4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		3A7F012617B040F600ED8ED4 /* TimeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSelectViewController.h; sourceTree = "<group>"; };
@@ -118,6 +124,9 @@
 		3AABE64717AEA32600B07330 /* RialtoBusTime */ = {
 			isa = PBXGroup;
 			children = (
+				3A5B94D917B3E54200C08D9B /* celBottomLine.png */,
+				3A5B94DA17B3E54200C08D9B /* cellGradient@2x.png */,
+				3A5B94DB17B3E54200C08D9B /* cellTopLine.png */,
 				3AABE65E17AEA38200B07330 /* busTime.txt */,
 				3AABE65017AEA32600B07330 /* AppDelegate.h */,
 				3AABE65117AEA32600B07330 /* AppDelegate.m */,
@@ -219,6 +228,9 @@
 				3A7F012517B001C900ED8ED4 /* icon.png in Resources */,
 				3A7F012A17B040F600ED8ED4 /* TimeSelectViewController.xib in Resources */,
 				3AC821F117B2FBC70055B5FA /* TimeSelectViewCell.xib in Resources */,
+				3A5B94DC17B3E54200C08D9B /* celBottomLine.png in Resources */,
+				3A5B94DD17B3E54200C08D9B /* cellGradient@2x.png in Resources */,
+				3A5B94DE17B3E54200C08D9B /* cellTopLine.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

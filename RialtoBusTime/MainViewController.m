@@ -79,9 +79,10 @@
     cell.startLabel.text = startTimeStr;
     cell.endLabel.text = time[@"end"];
     
-    NSArray *timeArr = [startTimeStr componentsSeparatedByString:@":"];
-    cell.timeLeftLabel.hour = [timeArr[0] integerValue];
-    cell.timeLeftLabel.minute = [timeArr[1] integerValue];
+    cell.timeLeftLabel.hour = [time[@"hour"] integerValue];
+    cell.timeLeftLabel.minute = [time[@"minute"] integerValue];
+    
+    cell.timeLeftLabel.first = ((indexPath.row == 0) && (indexPath.section == 0));
     
     cell.notificationIcon.hidden = YES;
     NSArray *scheduledNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
@@ -169,6 +170,8 @@
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     } else {
     }
+    [self.tableViewController.tableView reloadData];
+
 }
 
 #pragma mark - Lazy
